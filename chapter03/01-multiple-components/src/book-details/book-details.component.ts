@@ -10,9 +10,9 @@ export class BookDetailsComponent {
 
   @Input() book: Book;
 
-  @Output() deleteBook = new EventEmitter();
+  @Output() delete = new EventEmitter<number>();
 
-  removeBook() {
-    this.deleteBook.emit(this.book.isbn);
+  deleteBook () {
+    this.delete.emit(this.book.isbn);
   }
 }
