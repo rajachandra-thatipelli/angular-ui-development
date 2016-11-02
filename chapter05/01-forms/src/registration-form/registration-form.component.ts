@@ -6,4 +6,7 @@ import { Component } from '@angular/core';
   templateUrl: 'registration-form.component.html'
 })
 export class RegistrationFormComponent {
+  onSubmit (formValue) {
+    console.log(formValue);
+  }
 }

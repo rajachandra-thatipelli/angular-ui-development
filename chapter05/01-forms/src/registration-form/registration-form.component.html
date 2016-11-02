@@ -1,39 +1,65 @@
-<div class="container">
-  <div class="row m-1">
-    <div class="col-md-6">
-      <div class="box">
-        <div class="box-header">
-          <h2>Registration Form</h2>
-        </div>
-        <div class="box-divider"></div>
-        <div class="box-body">
-          <form novalidate>
-            <div class="form-group">
-              <label>User name</label>
-              <input type="text" class="form-control" name="username" placeholder="Username">
+<div class="row m-1">
+  <div class="col-md-8">
+    <div class="box">
+      <div class="box-header">
+        <h2>Registration Form</h2>
+      </div>
+      <div class="box-divider"></div>
+      <div class="box-body">
+        <form novalidate #formRef="ngForm" (ngSubmit)="onSubmit(formRef.value)">
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <label>First name</label>
+              <input type="text" class="form-control" name="firstName" ngModel #firstNameRef="ngModel">
             </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" class="form-control" name="email" placeholder="Email">
+            <div class="col-sm-6 form-group">
+              <label>Last name</label>
+              <input type="text" class="form-control" name="lastName" ngModel #lastNameRef="ngModel">
             </div>
-            <div class="row">
-              <div class="col-sm-6 form-group">
-                <label>Enter Password</label>
-                <input type="password" class="form-control" name="password" placeholder="Password">
-              </div>
-              <div class="col-sm-6 form-group">
-                <label>Confirm Password</label>
-                <input type="password" class="form-control" name="confirmPassword" placeholder="Password">
-              </div>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" name="email" ngModel #emailRef="ngModel">
+          </div>
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <label>Enter Password</label>
+              <input type="password" class="form-control" name="password" ngModel #passwordRef="ngModel">
             </div>
-            <div class="form-group">
-              <label class="md-check">
-                <input type="checkbox"><i class="blue"></i> I agree to the Terms of Service
+            <div class="col-sm-6 form-group">
+              <label>Confirm Password</label>
+              <input type="password" class="form-control" name="confirmPassword" ngModel #confirmPassRef="ngModel">
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class="col-sm-3">
+              <label>Gender</label>
+            </div>
+            <div class="col-sm-9">
+              <label class="check-label">
+                <input type="radio" name="gender"><i class="blue"></i>Male
+              </label>
+              <div class="spacer"></div>
+              <label class="check-label">
+                <input type="radio" name="gender"><i class="blue"></i>FeMale
+              </label>
+              <div class="spacer"></div>
+              <label class="check-label">
+                <input type="radio" name="gender"><i class="blue"></i>Other
               </label>
             </div>
-            <button type="submit" class="btn btn-secondary">Submit</button>
-          </form>
-        </div>
+          </div>
+
+
+          <div class="form-group">
+            <label class="check-label">
+              <input type="checkbox"><i class="blue"></i>I agree to the Terms of Service
+            </label>
+          </div>
+
+          <button type="submit" class="btn btn-secondary">Submit</button>
+        </form>
       </div>
     </div>
   </div>
