@@ -110,12 +110,11 @@ body {
   color: rgba(255, 255, 255, 0.87);
 }
 
-.check-label input[type="radio"]+i, .check-label input[type="radio"]+i:before {
+.check-label input[type="radio"] + i, .check-label input[type="radio"] + i:before {
   border-radius: 50%;
 }
 
-
-.check-label input[type="radio"]:checked+i:after {
+.check-label input[type="radio"]:checked + i:after {
   position: absolute;
   left: 6px;
   top: 6px;
