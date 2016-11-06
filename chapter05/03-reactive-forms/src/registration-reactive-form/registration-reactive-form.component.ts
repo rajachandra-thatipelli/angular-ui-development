@@ -1,35 +1,52 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
-  moduleId: module.id,
-  selector: 'registration-reactive-form',
-  templateUrl: 'registration-reactive-form.component.html'
+    moduleId: module.id,
+    selector: 'registration-reactive-form',
+    templateUrl: 'registration-reactive-form.component.html'
 })
 export class RegistrationReactiveFormComponent implements OnInit {
 
-  EMAIL_REGEX = "^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$";
+    EMAIL_REGEX = "^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$";
 
-  registrationForm: FormGroup;
+    registrationForm: FormGroup;
 
-  ngOnInit () {
+    // ngOnInit () {
+    //
+    //   this.registrationForm = new FormGroup({
+    //     firstName: new FormControl('Shravan', Validators.required),
+    //     lastName: new FormControl(''),
+    //     email: new FormControl('', [Validators.required, Validators.pattern(this.EMAIL_REGEX)]),
+    //     address: new FormGroup({
+    //       street: new FormControl(''),
+    //       city: new FormControl('', Validators.required),
+    //       state: new FormControl('', Validators.required),
+    //       zip: new FormControl(''),
+    //       country: new FormControl('', Validators.required)
+    //     })
+    //   })
 
-    this.registrationForm = new FormGroup({
-      firstName: new FormControl('Shravan', Validators.required),
-      lastName: new FormControl(''),
-      email: new FormControl('', [Validators.required, Validators.pattern(this.EMAIL_REGEX)]),
-      address: new FormGroup({
-        street: new FormControl(''),
-        city: new FormControl('', Validators.required),
-        state: new FormControl('', Validators.required),
-        zip: new FormControl(''),
-        country: new FormControl('', Validators.required)
-      })
-    });
-  }
+    constructor(public formBuilder: FormBuilder) {
+    }
 
-  onSubmit (formValue) {
-    console.log(formValue);
-    console.log(this.registrationForm.value)
-  }
+     ngOnInit() {
+      this.registrationForm = this.formBuilder.group({
+          firstName: ['Shravan', Validators.required],
+          lastName: '',
+          email: ['', [Validators.required, Validators.pattern(this.EMAIL_REGEX)]],
+          address: this.formBuilder.group({
+              street: '',
+              city: ['', Validators.required],
+              state: ['', Validators.required],
+              zip: '',
+              country: ['', Validators.required]
+          })
+      });
+    }
+
+    onSubmit(formValue) {
+        console.log(formValue);
+        console.log(this.registrationForm.value)
+    }
 }
