@@ -6,7 +6,8 @@ import { Component } from '@angular/core';
   templateUrl: 'registration-form.component.html'
 })
 export class RegistrationFormComponent {
-  EMAIL_REGEX = "^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$";
+  EMAIL_REGEX = "[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*";
+  PASSWORD_STRENGTH_REGEX = "(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#\$%\^&\*]{8,}";
 
   onSubmit(formValue) {
     console.log(formValue);
