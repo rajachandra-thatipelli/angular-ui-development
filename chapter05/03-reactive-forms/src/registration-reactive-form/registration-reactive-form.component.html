@@ -30,6 +30,26 @@
               The email format should be <i>shravan@theshravan.net</i>
             </div>
           </div>
+          <div class="row">
+            <div class="col-sm-6 form-group">
+              <label>Enter Password</label>
+              <input type="password" class="form-control" formControlName="password" >
+              <div class="error-message" *ngIf="registrationForm.get('password').touched && registrationForm.get('password').hasError('required')">
+                The password is required.
+              </div>
+              <div class="error-message" *ngIf="registrationForm.get('password').touched && registrationForm.get('password').hasError('weakPassword')">
+                The password must be minimum 8 characters, must contain at least 1 lowercase alphabet, 1 uppercase
+                alphabet, 1 numeric character, 1 special character.
+              </div>
+            </div>
+            <div class="col-sm-6 form-group">
+              <label>Confirm Password</label>
+              <input type="password" class="form-control" formControlName="confirmPassword">
+              <div class="error-message" *ngIf="registrationForm.get('confirmPassword').touched && registrationForm.get('confirmPassword').hasError('required')">
+                The confirm password is required.
+              </div>
+            </div>
+          </div>
           <div formGroupName="address">
             <div class="row">
               <div class="col-sm-6 form-group">
