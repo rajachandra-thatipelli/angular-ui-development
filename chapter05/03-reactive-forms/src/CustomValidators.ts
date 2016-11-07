@@ -1,19 +1,29 @@
 import { AbstractControl } from '@angular/forms';
 
 export class CustomValidators {
-  
-  static passwordStrength (control: AbstractControl) {
+
+  static passwordStrength(control: AbstractControl) {
     
-    if (CustomValidators.isEmptyInputValue(control.value)) {
+    if (CustomValidators.isEmptyValue(control.value)) {
       return null;
     }
 
-    if (!control.value.match(/^(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#\$%\^&\*]{8,}$/)) {
-      return {'weakPassword': true};
-    }
+    return control.value.match(/^(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9!@#\$%\^&\*]{8,}$/) ? null : { 'weakPassword': true };
   }
-  
-  static isEmptyInputValue (value) {
+
+  static passwordMatcher(control: AbstractControl) {
+
+    const password = control.get('password').value;
+    const confirmPassword = control.get('confirmPassword').value;
+
+    if (CustomValidators.isEmptyValue(password) || CustomValidators.isEmptyValue(confirmPassword)) {
+      return null;
+    }
+
+    return password === confirmPassword ? null : { 'mismatch': true };
+  }
+
+  static isEmptyValue(value) {
     return value == null || typeof value === 'string' && value.length === 0;
   }
 }

@@ -48,6 +48,9 @@
               <div class="error-message" *ngIf="registrationForm.get('confirmPassword').touched && registrationForm.get('confirmPassword').hasError('required')">
                 The confirm password is required.
               </div>
+              <div class="error-message" *ngIf="registrationForm.get('confirmPassword').touched && registrationForm.hasError('mismatch')">
+                The confirm password should match password.
+              </div>
             </div>
           </div>
           <div formGroupName="address">

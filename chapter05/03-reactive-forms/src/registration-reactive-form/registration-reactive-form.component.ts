@@ -45,7 +45,7 @@ export class RegistrationReactiveFormComponent implements OnInit {
         zip: '',
         country: ['', Validators.required]
       })
-    });
+    }, {validator: CustomValidators.passwordMatcher});
   }
 
   onSubmit (formValue) {
