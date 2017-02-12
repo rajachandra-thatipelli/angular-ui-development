@@ -14,7 +14,7 @@ export class BookDetailsComponent {
   @Output() onDelete = new EventEmitter<number>();
 
   deleteBook() {
-    this.onDelete.emit(this.book.isbn);
+    this.onDelete.emit(this.book.id);
   }
 
 }

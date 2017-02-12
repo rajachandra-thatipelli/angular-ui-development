@@ -1,24 +1,34 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Http, Headers } from '@angular/http';
 
-import {Book} from './book';
-import {BOOKS} from './mock-books';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
+
+import { Book } from './book';
 
 @Injectable()
 export class BookStoreService {
 
-  booksList: Book[] = BOOKS;
+  baseUrl: string = 'http://localhost:4567';
+  headers = new Headers({ 'Content-Type': 'application/json' });
 
-  getBooks(): Book[] {
-    return this.booksList;
+  constructor(private http: Http) { }
+
+  getBook(id: number): Observable<Book> {
+    const url = `${this.baseUrl}/books/${id}`;
+    return this.http.get(url)
+      .map(response => response.json() as Book);
   }
 
-  getBook(isbn: number): Book {
-    return this.booksList.find(book => book.isbn === isbn);
+  getBooks(): Observable<Book[]> {
+    const url = `${this.baseUrl}/books`;
+    return this.http.get(url)
+      .map(response => response.json() as Book[]);
   }
 
-  deleteBook(isbn: number) {
-    this.booksList = this.booksList.filter(book => book.isbn !== isbn);
-    return this.booksList;
+  deleteBook(id: number) {
+    const url = `${this.baseUrl}/books/${id}`;
+    return this.http.delete(url, { headers: this.headers })
+      .map(response => response.json());
   }
-
 }

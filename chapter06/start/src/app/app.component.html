@@ -28,7 +28,7 @@
       <div class="mdl-grid books-list-grid">
         <div class="mdl-cell mdl-cell--3-col books-list-grid-left-col">
           <ul class="list">
-            <li class="list-item" *ngFor="let book of booksList" (click)="getBookDetails(book.isbn)">
+            <li class="list-item" *ngFor="let book of booksList" (click)="getBookDetails(book.id)">
               <div class="cover-image-container">
                 <span class="cover-image">
                   <img [src]="book.coverImage" alt="cover image"/>
