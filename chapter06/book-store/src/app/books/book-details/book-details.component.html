@@ -12,7 +12,13 @@
     </div>
   </div>
   <div class="action-bar">
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored" (click)="goBack()">Go Back</button>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" (click)="deleteBook()">Delete Book</button>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+            (click)="goBack()">
+      Go Back
+    </button>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent"
+            (click)="deleteBook(book.id)">
+      Delete Book
+    </button>
   </div>
 </div>

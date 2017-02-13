@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Location } from '@angular/common';
 
 import 'rxjs/add/operator/switchMap';
@@ -16,15 +16,21 @@ export class BookDetailsComponent implements OnInit {
 
   book: Book;
 
-  constructor(private storeService: BookStoreService,
-              private route: ActivatedRoute,
-              private location: Location) {
+  constructor(private route: ActivatedRoute,
+              private router: Router,
+              private location: Location,
+              private storeService: BookStoreService) {
   }
 
   ngOnInit(): void {
     this.route.params
       .switchMap((params: Params) => this.storeService.getBook(+params['id']))
       .subscribe(book => this.book = book);
+  }
+
+  deleteBook(id: number) {
+    this.storeService.deleteBook(id)
+      .subscribe(res => this.router.navigate(['/books']));
   }
 
   goBack() {

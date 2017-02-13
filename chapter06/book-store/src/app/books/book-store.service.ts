@@ -10,9 +10,10 @@ import { Book } from './book';
 export class BookStoreService {
 
   baseUrl: string = 'http://localhost:4567';
-  headers = new Headers({ 'Content-Type': 'application/json' });
+  headers = new Headers({'Content-Type': 'application/json'});
 
-  constructor(private http: Http) { }
+  constructor(private http: Http) {
+  }
 
   getBook(id: number): Observable<Book> {
     const url = `${this.baseUrl}/books/${id}`;
@@ -29,13 +30,13 @@ export class BookStoreService {
   addBook(book: Book) {
     const url = `${this.baseUrl}/books`;
     let body = JSON.stringify(book);
-    return this.http.post(url, body, { headers: this.headers })
+    return this.http.post(url, body, {headers: this.headers})
       .map(response => response.json());
   }
 
   deleteBook(id: number) {
     const url = `${this.baseUrl}/books/${id}`;
-    return this.http.delete(url, { headers: this.headers })
+    return this.http.delete(url, {headers: this.headers})
       .map(response => response.json());
   }
 }

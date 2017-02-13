@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 import { Book } from '../book';
 import { BookStoreService } from '../book-store.service';
@@ -14,7 +15,10 @@ export class NewBookComponent implements OnInit {
 
   newBookForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private storeService: BookStoreService, private router: Router) {
+  constructor(private formBuilder: FormBuilder,
+              private router: Router,
+              private location: Location,
+              private storeService: BookStoreService) {
   }
 
   ngOnInit() {
@@ -28,15 +32,12 @@ export class NewBookComponent implements OnInit {
     });
   }
 
+
   saveBook() {
-    if(this.newBookForm.valid) {
+    if (this.newBookForm.valid) {
       var book = this.newBookForm.value as Book;
       this.storeService.addBook(book)
-          .subscribe(res => this.gotoBooksList());
+        .subscribe(res => this.router.navigate(['/books']));
     }
-  }
-
-  private gotoBooksList() {
-    this.router.navigate(['/books']);
   }
 }

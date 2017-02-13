@@ -34,8 +34,13 @@
     </div>
     <br/>
 
-    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" [disabled]="newBookForm.invalid">
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--colored"
+            [disabled]="newBookForm.invalid">
       Save
+    </button>
+
+    <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" (click)="this.location.back()">
+      Cancel
     </button>
   </form>
 </section>
