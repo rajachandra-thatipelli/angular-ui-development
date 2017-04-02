@@ -1,11 +1,11 @@
 (function (global) {
   System.config({
     paths: {
+      'npm:': 'node_modules/',
       'ng:': 'node_modules/@angular/'
     },
     map: {
-      'app': 'src',
-
+      'app': 'app',
       '@angular/animations': 'ng:animations/bundles/animations.umd.js',
       '@angular/animations/browser': 'ng:animations/bundles/animations-browser.umd.js',
       '@angular/core': 'ng:core/bundles/core.umd.js',
@@ -18,7 +18,7 @@
       '@angular/router': 'ng:router/bundles/router.umd.js',
       '@angular/router/upgrade': 'ng:router/bundles/router-upgrade.umd.js',
       '@angular/forms': 'ng:forms/bundles/forms.umd.js',
-      'rxjs': 'node_modules/rxjs',
+      'rxjs': 'node_modules/rxjs'
     },
     packages: {
       app: {
