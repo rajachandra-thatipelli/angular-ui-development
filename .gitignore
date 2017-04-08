@@ -38,6 +38,8 @@ jspm_packages
 
 *.js
 !systemjs.config.js
+!karma.conf.js		
+!protractor.conf.js
 *.map
 typings
 
