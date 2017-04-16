@@ -1,0 +1,8 @@
+md-sidenav {
+  width: 300px;
+}
+
+.tab-content-container {
+  height: calc(100vh - 113px);
+  padding: 1rem;
+}
