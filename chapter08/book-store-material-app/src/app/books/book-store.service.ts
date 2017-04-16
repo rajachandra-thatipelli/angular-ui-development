@@ -31,12 +31,12 @@ export class BookStoreService {
     const url = `${this.baseUrl}`;
     const body = JSON.stringify(book);
     return this.http.post(url, body, {headers: this.headers})
-      .map(response => response.json());
+      .map(response => response);
   }
 
   deleteBook(id: number) {
     const url = `${this.baseUrl}${id}`;
     return this.http.delete(url, {headers: this.headers})
-      .map(response => response.json());
+      .map(response => response);
   }
 }

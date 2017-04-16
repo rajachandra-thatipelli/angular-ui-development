@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import 'hammerjs';
 
-import { BookStoreMaterialModule } from './BookStoreMaterialModule';
-
 import { AppComponent } from './app.component';
 import { Safe } from './safe';
+
+import { AppMaterialModule } from './app-material.module';
 
 import {
   BookStoreService,
   MasterDetailComponent,
-  ListComponent
+  ListComponent,
+  AddBookDialogComponent
 } from './books';
 
 @NgModule({
@@ -21,16 +23,19 @@ import {
     AppComponent,
     Safe,
     MasterDetailComponent,
-    ListComponent
+    ListComponent,
+    AddBookDialogComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     HttpModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
-    BookStoreMaterialModule
+    AppMaterialModule
   ],
   providers: [BookStoreService],
+  entryComponents: [AddBookDialogComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {

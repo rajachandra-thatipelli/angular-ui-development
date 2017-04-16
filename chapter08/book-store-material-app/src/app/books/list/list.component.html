@@ -1,28 +1,14 @@
-<div fxLayout="column" fxFlex>
-  <h2 class="page-title">Books List Master Detail Page</h2>
-  <md-sidenav-container flexLayout-="row" fxFlex fxLayoutGap="16px" class="books-list">
-    <md-sidenav mode="side" opened>
-      <md-nav-list>
-        <md-list-item *ngFor="let book of booksList" (click)="selectedBook = book" class="books-list">
-          <img md-list-avatar [src]="book.coverImage" />
-          <h2 md-line>{{book.title}}</h2>
-          <p md-line> {{book.authors}} </p>
-        </md-list-item>
-      </md-nav-list>
-    </md-sidenav>
-    <div class="books-list-item" fxFlex>
-      <div *ngIf="selectedBook" class="books-list-item--detail" fxLayout="row" fxFlex.sm="column">
-        <div class="books-list-item--coverimage">
-          <img [src]="selectedBook.coverImage" />
-        </div>
-        <div class="books-list-item--content" fxFlex>
-          <h3>{{selectedBook.title}}</h3>
-          <p>{{selectedBook.authors}}</p>
-          <p>{{selectedBook.published}}</p>
-          <p>ISBN: {{selectedBook.isbn}}</p>
-          <p>{{selectedBook.description}}</p>
-        </div>
-      </div>
-    </div>
-  </md-sidenav-container>
+<md-progress-spinner color="accent" mode="indeterminate" [style.display]="spinnerVisibility" class="spinner">
+</md-progress-spinner>
+<div fxLayout="column" fxFlex *ngIf="booksList.length > 0">
+  <h2 class="page-title">Books List Page</h2>
+  <section fxLayout="row" fxLayoutWrap fxLayout.sm="column" fxLayoutGap="24px" fxLayoutAlign="center">
+    <md-card class="book-card" *ngFor="let book of booksList" (click)="selectedBook = book">
+      <img md-card-image [src]="book.coverImage">
+      <md-card-actions>
+        <button md-button>VIEW</button>
+        <button md-button (click)="deleteBook(book.id)">DELETE</button>
+      </md-card-actions>
+    </md-card>
+  </section>
 </div>

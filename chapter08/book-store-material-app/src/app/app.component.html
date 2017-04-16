@@ -5,6 +5,10 @@
       <md-icon>menu</md-icon>
     </button>
     <span>Book Store</span>
+    <span class="spacer"></span>
+    <button md-mini-fab (click)="openAddBookDialog()">
+      <md-icon>add</md-icon>
+    </button>
   </md-toolbar>
 
   <md-sidenav-container fxFlex>
@@ -16,15 +20,15 @@
       </md-nav-list>
     </md-sidenav>
     <div class="content" fxLayout="column" fxFlex>
-      <md-tab-group>
-        <md-tab label="Master Detail">
-          <div fxFlex class="tab-content-container">
-            <bl-master-detail fxFlex></bl-master-detail>
+      <md-tab-group dynamicHeight="true">
+        <md-tab label="List">
+          <div fxFlex class="books-list-container">
+            <bl-list fxFlex></bl-list>
           </div>
         </md-tab>
-        <md-tab label="List">
-          <div fxFlex class="tab-content-container">
-            <bl-list fxFlex></bl-list>
+        <md-tab label="Master Detail">
+          <div fxFlex class="master-detail-container">
+            <bl-master-detail fxFlex></bl-master-detail>
           </div>
         </md-tab>
       </md-tab-group>

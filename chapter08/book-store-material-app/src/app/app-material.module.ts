@@ -5,4 +5,4 @@ import { MaterialModule } from '@angular/material';
   imports: [MaterialModule],
   exports: [MaterialModule]
 })
-export class BookStoreMaterialModule { }
+export class AppMaterialModule { }
