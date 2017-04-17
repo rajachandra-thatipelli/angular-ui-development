@@ -23,16 +23,16 @@ export class ListComponent implements OnInit {
   getBooks() {
     this.bookStoreService
       .getBooks()
-      .subscribe(res => {
-        this.booksList = res;
+      .subscribe(response => {
+        this.booksList = response;
         this.spinnerVisibility = 'none';
       });
   }
 
   deleteBook(id: number) {
+    this.booksList = this.booksList.filter(book => book.id !== id);
     this.bookStoreService.deleteBook(id)
       .subscribe(result => {
-        console.log(result);
         if (result.ok) {
           this.openSnackBar();
         }

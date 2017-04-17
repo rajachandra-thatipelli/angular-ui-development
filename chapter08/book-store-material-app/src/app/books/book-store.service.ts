@@ -3,6 +3,7 @@ import { Http, Headers } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/delay';
 
 import { Book } from './book';
 
@@ -24,6 +25,7 @@ export class BookStoreService {
   getBooks(): Observable<Book[]> {
     const url = `${this.baseUrl}`;
     return this.http.get(url)
+      .delay(5000)
       .map(response => response.json() as Book[]);
   }
 
