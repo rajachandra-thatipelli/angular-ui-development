@@ -7,5 +7,5 @@ import { MdDialogRef } from '@angular/material';
   templateUrl: './add-book-dialog.component.html'
 })
 export class AddBookDialogComponent  {
-  constructor(public dialogRef: MdDialogRef<AddBookDialogComponent>) {}
+  constructor(private dialogRef: MdDialogRef<AddBookDialogComponent>) {}
 }
